@@ -1,0 +1,22 @@
+{
+    "dependencies": {
+        "cypress": "^4.11.0",
+        "devtools": "6.1.25",
+        "playwright": "^1.2.0",
+        "webdriverio": "6.1.25",
+        "puppeteer": "5.0.0"
+    },
+    "devDependencies": {
+        "@wdio/devtools-service": "^5.0.0",
+        "devtools": "6.1.25",
+        "expect-playwright": "0.2.5"
+    },
+    "scripts": {
+        "test:webdriverio:webdriver": "node ./webdriverio/newnew.test.js",
+        "test:webdriverio:devtools": "node ./intercept.js",
+        "test:playwright:multi-browser": "node ./playwright/RWA.multi.js",
+        "test:playwright:headful": "node ./playwright/headful.js",
+        "test:cypress:open": "node_modules/.bin/cypress open",
+        "test:cypress:headless": "node_modeules/.bin/cypress run --browser chrome"
+    }
+}
