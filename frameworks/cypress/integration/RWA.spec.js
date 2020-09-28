@@ -19,7 +19,7 @@ describe('Can find existing user in RWA', () => {
       cy.get('div#root div.MuiListItemText-root.MuiListItemText-multiline > span').contains('Devon Becker')
     })
 
-    it('Mocking CWA', () => {
+    it('Can Find a Mocked User and Intercept', () => {
       cy.title().should('eq', 'React App');
 
       cy.get('input[name="username"]').type('Katharina_Bernier');
@@ -32,7 +32,7 @@ describe('Can find existing user in RWA', () => {
         method: 'GET',
         status: 200,
         request: '/users/search?q=Devon+Becker',
-        response: {"results":[{"id":"tsHF6_D5oQ","uuid":"53315353-7ca6-4cd1-8fd6-af9fb5a9dd25","firstName":"John","lastName":"Hill","username":"Jessyca.Kuhic","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Jordy37@yahoo.com","phoneNumber":"277-189-3402","avatar":"https://api.adorable.io/avatars/128/tsHF6_D5oQ.png","defaultPrivacyLevel":"contacts","balance":75369,"createdAt":"2020-02-11T21:26:46.510Z","modifiedAt":"2020-05-21T15:15:33.944Z"}]}
+        response: {"results":[{"id":"tsHF6_D5oQ","uuid":"53315353-7ca6-4cd1-8fd6-af9fb5a9dd25","firstName":"John","lastName":"Hill","username":"Jessyca.Kuhic","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Jordy37@yahoo.com","phoneNumber":"277-189-3402","avatar":"https://sdtimes.com/wp-content/uploads/2018/07/lHYLxJV3_400x400.jpg","defaultPrivacyLevel":"contacts","balance":75369,"createdAt":"2020-02-11T21:26:46.510Z","modifiedAt":"2020-05-21T15:15:33.944Z"}]}
       }
 
       )
