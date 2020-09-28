@@ -30,7 +30,7 @@ describe('Can find existing user in RWA', () => {
         await (await $('input[name="q"]')).waitForExist();
         await (await $('input[name="q"]')).setValue('Devon Becker');
 
-        await browser.pause(1000)
+        //await browser.pause(1000)
 
         assert.ok((await (await $('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')).getText()).includes('Devon Becker'));
     });

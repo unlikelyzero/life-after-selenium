@@ -7,7 +7,9 @@ const expect = require('expect-playwright');
     const context = await browser.newContext();
     const page = await context.newPage();
     
+    //Note how
     await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
+
     await page.waitForSelector('input[name="username"]')
     await page.click('input[name="username"]')
     await page.keyboard.type('Katharina_Bernier')
@@ -24,10 +26,12 @@ const expect = require('expect-playwright');
     await page.click('input[name="q"]')
     await page.keyboard.type('Devon Becker')
 
-    //await page.waitForSelector('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')
-    //await expect('div#root div.MuiListItemText-root.MuiListItemText-multiline > span').toHaveText("Devon Becker")
+    await page.waitForSelector('css=[data-test="users-list"]')
+    //await expect(page).toHaveText('div#root div.MuiListItemText-root.MuiListItemText-multiline > span', "Devon Becker")
+    //await expect(page).toEqualValue('css=[data-test="users-list"]', "Devon Becker")
+    //await expect(page).toHaveText("Devon Becker")
 
-    await page.screenshot({ path: `./playwright/RWA-${browserType}.png` });
+    await page.screenshot({ path: `./frameworks/playwright/RWA-${browserType}.png` });
     await browser.close();
   }
 })();
