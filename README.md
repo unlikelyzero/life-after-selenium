@@ -14,6 +14,10 @@ Verify that you see the app running on `http://localhost:3000/`
 2. Install the test frameworks with `npm install`
 3. Pick your framework and run with `test` scripts in package.json. i.e. `npm run test:webdriverio:puppeteer`
 
+## Add Latency to Cypress Real World App
+1. Install [comcast](https://github.com/tylertreat/comcast)
+2. comcast --device=eth0 --latency=100 --target-addr=0.0.0.0/24 --target-proto=tcp,udp,icmp --target-port=3000,3001
+
 # Presentations
 ## Slide Deck
 https://slides.com/unlikelyzero/life-after-selenium/

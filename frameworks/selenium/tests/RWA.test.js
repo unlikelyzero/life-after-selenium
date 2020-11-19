@@ -31,12 +31,15 @@ describe ('Can find existing user in RWA', async function () {
         (await webpage.findByCss('input[name="username"]')).sendKeys('Katharina_Bernier');
         (await webpage.findByCss('input[name="password"]')).sendKeys('s3cret');
         (await webpage.findByCss('button[type="submit"]')).click();
+   
+        //Antipattern Wait for some time.
+        await driver.sleep(2000);
+
+        //Antipattern Wait for an element to load to know that you've logged in
+        //await webpage.findByCss('a[href="/transaction/new"]'))
         
-        //Wait for some time.
-        //await driver.sleep(2000);
-        
-        //Poll the browser continuously until true.
-        //await driver.wait(until.elementLocated(By.css('a[href="/transaction/new"]')), 1000);
+        //Selenium: Poll the browser continuously until true.
+        await driver.wait(until.elementLocated(By.css('a[href="/transaction/new"]')), 10);
         
         (await webpage.findByCss('a[href="/transaction/new"]')).click();
         //await driver.sleep(2000);

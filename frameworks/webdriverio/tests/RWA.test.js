@@ -4,7 +4,6 @@ const retry = require('async-retry');
 describe('Can find existing user in RWA', () => {
     
     before(async () => {
-        //await browser.enablePerformanceAudits();
         await browser.setWindowSize(1440, 900);
         await browser.url('http://localhost:3000');
     });
@@ -26,11 +25,11 @@ describe('Can find existing user in RWA', () => {
         await (await $('a[href="/transaction/new"]')).click();
     });
 
-    it.skip('can filter existing users for Devon Becker - Selenium', async () => {
+    it.skip('can filter existing users for Devon Becker - Webdriver', async () => {
         await (await $('input[name="q"]')).waitForExist();
         await (await $('input[name="q"]')).setValue('Devon Becker');
 
-        //await browser.pause(1000)
+        await browser.pause(2000)
 
         assert.ok((await (await $('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')).getText()).includes('Devon Becker'));
     });
