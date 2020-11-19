@@ -25,16 +25,17 @@ describe('Can find existing user in RWA', () => {
         await (await $('a[href="/transaction/new"]')).click();
     });
 
-    it.skip('can filter existing users for Devon Becker - Webdriver', async () => {
+    it('can filter existing users for Devon Becker - Webdriver', async () => {
         await (await $('input[name="q"]')).waitForExist();
         await (await $('input[name="q"]')).setValue('Devon Becker');
-
-        await browser.pause(2000)
+        
+        //Anti-pattern: Wait or Sleep
+        //await browser.pause(2000)
 
         assert.ok((await (await $('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')).getText()).includes('Devon Becker'));
     });
 
-    it('can filter existing users for Devon Becker - XHR intercept', async () => {
+    it.skip('can filter existing users for Devon Becker - XHR intercept', async () => {
         await (await $('input[name="q"]')).waitForExist();
 
         //Intercept the request
