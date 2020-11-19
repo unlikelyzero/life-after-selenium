@@ -3,7 +3,7 @@ describe('Can find existing user in RWA', () => {
     //Navigate to RWA
     cy.visit('http://localhost:3000');
   });
-    it.skip('should navigate to Cypress Web App and find Dev Becker', () => {
+    it('should navigate to Cypress Web App and find Dev Becker', () => {
       
       //Check Title
       cy.title().should('eq', 'React App');
@@ -29,7 +29,7 @@ describe('Can find existing user in RWA', () => {
       cy.get('div#root div.MuiListItemText-root.MuiListItemText-multiline > span').contains('Devon Becker')
     })
 
-    it('Can Find a Mocked User and Intercept', () => {
+    it.skip('Can Find a Mocked User and Intercept', () => {
       cy.title().should('eq', 'React App');
 
       cy.get('input[name="username"]').type('Katharina_Bernier');
