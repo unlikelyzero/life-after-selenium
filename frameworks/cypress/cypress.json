@@ -3,7 +3,7 @@
     "video": false,
     "supportFile": false,
     "fixturesFolder": false,
-    "screenshotsFolder": "./cypress-test/screenshots",
+    "screenshotsFolder": "./frameworks/cypress/screenshots",
     "pluginsFile": false,
-    "integrationFolder": "integration/"
+    "integrationFolder": "./frameworks/cypress/integration/"
 }

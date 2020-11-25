@@ -19,8 +19,7 @@
         "wdio-intercept-service": "4.1.2",
         "expect-playwright": "0.2.5",
         "mocha": "^6.1.4",
-        "selenium-webdriver": "^4.0.0-alpha.7",
-        "cypress": "^4.11.0"
+        "selenium-webdriver": "^4.0.0-alpha.7"
     },
     "scripts": {
         "test:selenium": "mocha ./frameworks/selenium/tests/*.js --timeout 10000",
@@ -28,7 +27,7 @@
         "test:webdriverio:puppeteer": "wdio ./frameworks/webdriverio/wdio.puppet.conf.js",
         "test:playwright:multi-browser": "node ./frameworks/playwright/RWA.multi.js",
         "test:playwright:headful": "node ./frameworks/playwright/headful.js",
-        "test:cypress:open": "node ./frameworks/cypress open",
-        "test:cypress:headless": "node_modeules/.bin/cypress run --browser chrome"
+        "test:cypress:open": "node ./node_modules/cypress/bin/cypress open --config-file ./frameworks/cypress/cypress.json",
+        "test:cypress:headless": "node ./node_modules/cypress/bin/cypress run --config-file ./frameworks/cypress/cypress.json --browser chrome"
     }
 }
