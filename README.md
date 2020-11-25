@@ -19,8 +19,9 @@ Verify that you see the app running on `http://localhost:3000/`
 2. comcast --device=eth0 --latency=100 --target-addr=0.0.0.0/24 --target-proto=tcp,udp,icmp --target-port=3000,3001
 
 # Presentations
-## Slide Deck
-https://slides.com/unlikelyzero/life-after-selenium/
+## Slide Decks
+Latest: https://slides.com/unlikelyzero/life-after-selenium-07-08-20
 
+Abbreviatied: https://slides.com/unlikelyzero/life-after-selenium-03810f
 ## Youtube Recording
 https://youtu.be/89riVKOTyFY
