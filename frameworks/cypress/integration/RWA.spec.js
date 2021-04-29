@@ -82,7 +82,7 @@ describe('Can find existing user in RWA', () => {
       expect(res).to.exist
       console.log('original response from the server is %s %o', typeof res.body, res.body)
       const modified_body = JSON.parse(res.body)
-      modified_body.results[0].firstName = "Thinkaboutthedgecasesyoucantestnow"
+      modified_body.results[0].firstName = "John"
       modified_body.results[0].lastName = "Hill"
       console.log('new response from the server is %s %o', typeof modified_body, modified_body)
       res.send(modified_body)
