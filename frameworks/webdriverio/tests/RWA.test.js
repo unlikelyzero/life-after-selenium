@@ -1,5 +1,7 @@
 const assert = require('assert');
 const retry = require('async-retry');
+const uglySearchCss = "div#root div.MuiListItemText-root.MuiListItemText-multiline > span"; //ugly css replacement
+
 
 describe('Can find existing user in RWA', () => {
     
@@ -8,43 +10,46 @@ describe('Can find existing user in RWA', () => {
         await browser.url('http://localhost:3000');
     });
 
-    it('should navigate to Cypress Web App', async () => {
+    it('should navigate to Cypress Real World App', async () => {
         const pageTitle = await browser.getTitle();
-        assert.equal(pageTitle, 'React App');
+        assert.equal(pageTitle, 'Cypress Real World App');
     });
 
-    it('should let user login, navigate to new transaction page', async () => {
+    it('user can log in and navigate to new transaction page', async () => {
         
         (await $('#username')).click();
         await (await $('input[name="username"]')).waitForExist();
         await (await $('input[name="username"]')).setValue('Katharina_Bernier');
         await (await $('input[name="password"]')).setValue('s3cret');
         await (await $('button[type="submit"]')).click();
-
+        
+        //Better Waiting-until-true!
         await (await $('a[href="/transaction/new"]')).waitForExist();
         await (await $('a[href="/transaction/new"]')).click();
     });
 
-    it('can filter existing users for Devon Becker - Webdriver', async () => {
+    it.skip('can filter existing users for Devon Becker - Webdriver', async () => {
         await (await $('input[name="q"]')).waitForExist();
         await (await $('input[name="q"]')).setValue('Devon Becker');
         
+        //'GET', 'http://localhost:3001/users/search?q=Devon+Becker'
         //Anti-pattern: Wait or Sleep
-        //await browser.pause(2000)
+        await browser.pause(2000)
 
-        assert.ok((await (await $('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')).getText()).includes('Devon Becker'));
+        assert.ok((await (await $(uglySearchCss)).getText()).includes('Devon Becker'));
     });
 
-    it.skip('can filter existing users for Devon Becker - XHR intercept', async () => {
-        await (await $('input[name="q"]')).waitForExist();
+    it('can filter existing users for Devon Becker - Puppeteer', async () => {
 
-        //Intercept the request
-        await browser.setupInterceptor();
-        await browser.expectRequest('GET', 'http://localhost:3001/users/search?q=Devon+Becker', 200);
+        await (await $('input[name="q"]')).waitForExist();    
         await (await $('input[name="q"]')).setValue('Devon Becker');
 
-        let keepTrying;
+        //XHR Network request to intercept
+        await browser.setupInterceptor();
+        await browser.expectRequest('GET', 'http://localhost:3001/users/search?q=Devon+Becker', 200);
 
+        //Instead of sleeping, we're listening for the XHR network event
+        let keepTrying;
         do {
             try {
                 await browser.assertRequests();
@@ -54,7 +59,7 @@ describe('Can find existing user in RWA', () => {
             }
         } while (keepTrying)
         
-        assert.ok((await (await $('div#root div.MuiListItemText-root.MuiListItemText-multiline > span')).getText()).includes('Devon Becker'));
+        assert.ok((await (await $(uglySearchCss)).getText()).includes('Devon Becker'));
     });
 
 });
